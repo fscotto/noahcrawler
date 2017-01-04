@@ -6,10 +6,6 @@ public class Table {
 	private TableHeader header;
 	private List<TableRow> rows;
 
-	public Table() {
-		header = new TableHeader();
-	}
-
 	public void setHeader(TableHeader header) {
 		this.header = header;
 	}
@@ -27,7 +23,7 @@ public class Table {
 	}
 
 	public int columns() {
-		return header.size();
+		return header != null ? header.size() : 0;
 	}
 
 }

@@ -1,27 +1,16 @@
 package it.noah.crawler.model;
 
-import it.noah.crawler.annotation.Column;
-import it.noah.crawler.annotation.NoahCrawlerModel;
-import it.noah.crawler.annotation.Transiet;
-
+import java.io.Serializable;
 import java.util.List;
 
-@NoahCrawlerModel
-public class Provincia {
+public class Provincia implements Serializable {
 
-	@Transiet
+	private static final long serialVersionUID = 106451135158559443L;
+
 	private Long id;
-
-	@Column(name = "Provincia")
 	private String nome;
-
-	@Column(name = "Sigla")
 	private String sigla;
-
-	@Column(name = "Regione")
 	private String regione;
-
-	@Transiet
 	private List<Comune> comuni;
 
 	public void setId(Long id) {
