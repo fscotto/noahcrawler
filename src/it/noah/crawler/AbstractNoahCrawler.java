@@ -1,13 +1,19 @@
 package it.noah.crawler;
 
+import java.io.IOException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import it.noah.crawler.dom.NoahDOMExplorer;
 import it.noah.crawler.dom.tag.Table;
 import it.noah.crawler.exception.NoahCrawlerException;
 import it.noah.crawler.exception.ObjectNotFoundException;
 
-import java.io.IOException;
-
 public abstract class AbstractNoahCrawler implements NoahCrawler {
+
+	private final static Logger log = LoggerFactory
+			.getLogger(AbstractNoahCrawler.class);
 
 	private NoahDOMExplorer explorer;
 
@@ -15,7 +21,7 @@ public abstract class AbstractNoahCrawler implements NoahCrawler {
 		try {
 			this.explorer = new NoahDOMExplorer(url);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage());
 		}
 	}
 

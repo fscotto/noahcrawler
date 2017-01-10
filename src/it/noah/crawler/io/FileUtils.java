@@ -67,7 +67,7 @@ public class FileUtils {
 		int spaces = 0;
 
 		try {
-			for (int i = 0; (ch = in.read()) != -1; i++) {
+			while ((ch = in.read()) != -1) {
 				if (Character.isWhitespace((char) ch)) {
 					spaces++;
 				}

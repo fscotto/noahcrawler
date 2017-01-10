@@ -2,8 +2,7 @@ package it.noah.crawler.enums;
 
 public enum UrlEnum {
 	PROVINCE_URL(
-			"http://www.aci.it/i-servizi/normative/codice-della-strada/elenco-sigle-province-ditalia.html"),
-	COMUNI_URL("https://it.wikipedia.org/wiki/Citt%C3%A0_d'Italia");
+			"http://www.aci.it/i-servizi/normative/codice-della-strada/elenco-sigle-province-ditalia.html");
 
 	private String url;
 

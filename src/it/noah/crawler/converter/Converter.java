@@ -1,11 +1,11 @@
 package it.noah.crawler.converter;
 
-import it.noah.crawler.dom.tag.Table;
-
 import java.util.List;
+
+import it.noah.crawler.dom.tag.Table;
 
 public interface Converter<T> {
 
-	public <T> List<T> convertTable(Table table);
+	public List<T> convertTable(Table table);
 
 }
