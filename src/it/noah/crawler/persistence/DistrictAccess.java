@@ -6,33 +6,33 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import it.noah.crawler.model.Provincia;
+import it.noah.crawler.model.District;
 
-public class AccessProvincia {
+public class DistrictAccess {
 
-	public void insertProvince(List<Provincia> province) throws SQLException {
+	public void insertDistricts(List<District> districts) throws SQLException {
 		Connection conn = null;
-		PreparedStatement regioni = null;
+		PreparedStatement regions = null;
 		PreparedStatement stmt = null;
-		ResultSet regione = null;
+		ResultSet region = null;
 
 		try {
 			conn = ConnectionFactory.getInstance();
 			conn.setAutoCommit(false);
-			for (Provincia provincia : province) {
-				regioni = conn.prepareStatement(
+			for (District district : districts) {
+				regions = conn.prepareStatement(
 						"select id from regioni where nome = ?");
-				regioni.setString(1, provincia.getRegione());
-				regione = regioni.executeQuery();
-				regione.next();
+				regions.setString(1, district.getRegion());
+				region = regions.executeQuery();
+				region.next();
 				stmt = conn.prepareStatement(
 						"insert into province (idRegione, nome, sigla) values (?, ?, ?)");
-				stmt.setInt(1, regione.getInt("id"));
-				stmt.setString(2, provincia.getNome());
-				stmt.setString(3, provincia.getSigla());
+				stmt.setInt(1, region.getInt("id"));
+				stmt.setString(2, district.getName());
+				stmt.setString(3, district.getInitial());
 				stmt.executeUpdate();
-				if (stmt != null && regione != null) {
-					regione.close();
+				if (stmt != null && region != null) {
+					region.close();
 					stmt.close();
 				}
 			}

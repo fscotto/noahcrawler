@@ -60,24 +60,27 @@ public class NoahCrawlerServlet extends HttpServlet {
 
 		try {
 			if (param == null) {
-				log.warn("ATTENZIONE!!! Stanno partendo tutti i crawler");
+				log.warn("WARNING!!! All crawler started!");
 				runAllCrawler();
 			}
 
-			if (CrawlerEnum.PROVINCIA_CRAWLER.name().equalsIgnoreCase(param)) {
-				runCrawler(CrawlerEnum.PROVINCIA_CRAWLER);
-			} else if (CrawlerEnum.COMUNE_CRAWLER.name()
+			if (CrawlerEnum.DISTRICT_CRAWLER.name().equalsIgnoreCase(param)) {
+				runCrawler(CrawlerEnum.DISTRICT_CRAWLER);
+				out.println("<h1>Successful Job!!!</h1>");
+			} else if (CrawlerEnum.TOWN_CRAWLER.name()
 					.equalsIgnoreCase(param)) {
-				runCrawler(CrawlerEnum.COMUNE_CRAWLER);
+				runCrawler(CrawlerEnum.TOWN_CRAWLER);
+				out.println("<h1>Successful Job!!!</h1>");
 			} else if ("allCrawler".equalsIgnoreCase(param)) {
 				runAllCrawler();
+				out.println("<h1>Successful Job!!!</h1>");
+			} else {
+				out.println("<h1>Error 500 parameter not valid</h1>");
 			}
 		} catch (NoahCrawlerException | IOException e) {
-			log.error("[ERRORE] " + e.getMessage());
-			out.println("[ERRORE] " + e.getMessage());
+			log.error("[ERROR] " + e.getMessage());
+			out.println("[ERROR] " + e.getMessage());
 		}
-
-		out.println("<h1>Job eseguito con successo!!!</h1>");
 	}
 
 	private void runAllCrawler() throws NoahCrawlerException, IOException {

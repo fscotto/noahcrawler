@@ -1,15 +1,15 @@
 package it.noah.crawler.dom;
 
-import it.noah.crawler.dom.tag.Table;
-import it.noah.crawler.dom.tag.builder.TableBuilder;
-import it.noah.crawler.exception.ObjectNotFoundException;
-
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import it.noah.crawler.dom.tag.Table;
+import it.noah.crawler.dom.tag.builder.TableBuilder;
+import it.noah.crawler.exception.ObjectNotFoundException;
 
 public class NoahDOMExplorer {
 
@@ -26,8 +26,7 @@ public class NoahDOMExplorer {
 	public synchronized Table getTable(String tableName, boolean header)
 			throws ObjectNotFoundException {
 		if (document == null) {
-			throw new ObjectNotFoundException(
-					"Documento non presente in sessione");
+			throw new ObjectNotFoundException("Document not found!!!");
 		}
 		Elements elements = document.getElementsByTag("table");
 		Element element = selectByName(elements, tableName);
@@ -38,7 +37,7 @@ public class NoahDOMExplorer {
 	private synchronized Element selectByName(Elements elements, String name) {
 		Element selected = null;
 		if (name == null || elements == null) {
-			throw new IllegalArgumentException("Parametri non validi!!!");
+			throw new IllegalArgumentException("Parameter not valid!!!");
 		}
 		for (Element current : elements) {
 			if (name.equals(current.className())) {
