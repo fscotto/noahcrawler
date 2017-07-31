@@ -10,11 +10,11 @@ import org.slf4j.LoggerFactory;
 import it.noah.crawler.AbstractNoahCrawler;
 import it.noah.crawler.NoahCrawler;
 import it.noah.crawler.converter.DistrictConverter;
+import it.noah.crawler.dao.DistrictDao;
 import it.noah.crawler.dom.tag.Table;
 import it.noah.crawler.exception.NoahCrawlerException;
 import it.noah.crawler.exception.ObjectNotFoundException;
 import it.noah.crawler.model.District;
-import it.noah.crawler.persistence.DistrictAccess;
 
 public class NoahDistrictCrawler extends AbstractNoahCrawler
 		implements NoahCrawler {
@@ -35,7 +35,7 @@ public class NoahDistrictCrawler extends AbstractNoahCrawler
 			List<District> districts = convertTableToDistricts(
 					getTable("", true));
 			log.debug("Convertion succesfull!!!");
-			DistrictAccess access = new DistrictAccess();
+			DistrictDao access = new DistrictDao();
 			access.insertDistricts(districts);
 			log.info("End " + this.getClass().getSimpleName());
 		} catch (ObjectNotFoundException e) {

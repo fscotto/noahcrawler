@@ -1,4 +1,4 @@
-package it.noah.crawler.persistence;
+package it.noah.crawler.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import it.noah.crawler.model.District;
 
-public class DistrictAccess {
+public class DistrictDao {
 
 	public void insertDistricts(List<District> districts) throws SQLException {
 		Connection conn = null;

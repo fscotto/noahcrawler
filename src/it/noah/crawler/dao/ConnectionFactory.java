@@ -1,4 +1,4 @@
-package it.noah.crawler.persistence;
+package it.noah.crawler.dao;
 
 import java.io.IOException;
 import java.sql.Connection;
